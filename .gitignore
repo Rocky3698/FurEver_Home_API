@@ -1,0 +1,4 @@
+FurEver_Home/.env
+__pycache__/
+test.REST
+db.sqlite3

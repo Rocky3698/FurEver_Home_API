@@ -1,0 +1,78 @@
+curl -X POST http://127.0.0.1:8000/user/register/ \
+-H "Content-Type: application/json" \
+-d '{
+    "username": "shahin20809",
+    "email": "rocky20809@gmail.com",
+    "password": "shahin567",
+    "first_name": "John",
+    "last_name": "Doe",
+    "gender": "male",
+    "phone": "+1234567890",
+    "dp": "http://example.com/path/to/profile-pic.jpg",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "role": "adopter",
+    "address": {
+        "city": "New York",
+        "street_address": "123 Main St",
+        "street_number": "456",
+        "postal_code": "10001",
+        "country": "USA"
+    }
+}'
+###
+curl -X POST http://127.0.0.1:8000/user/login/ \
+-H "Content-Type: application/json" \
+-d '{
+    "email": "rocky20809@gmail.com",
+    "password": "shahin567"
+}'
+###
+GET http://127.0.0.1:8000/user/logout/
+Content-Type: application/json
+Authorization: token 84c2220fc727bbf73e774fe25bdb294218fa865e
+###
+GET http://127.0.0.1:8000/user/
+Content-Type: application/json
+Authorization: token 5c9e9dfed90101ed1028d8432ef055b944de797c
+###
+GET http://127.0.0.1:8000/pet/pets/?pet_id=2
+Content-Type: application/json
+Authorization: token 87dec2bd5ed1c7af656df84aed7596c6af02ee67
+#api/pets/
+#api/pets/?shelter_id=1
+#api/pets/?pet_id=1
+#api/pets/?status=adopted
+#api/pets/?slug=breed
+
+###
+GET http://127.0.0.1:8000/adoption/?adopter_id=2
+Content-Type: application/json
+Authorization: token f983c242f8ff5204818e5948fe641c334e724baa
+
+#api/adoptions
+#api/adoptions/adopter_id=1
+#api/adoptions/shleter_id=1
+#api/adoptions/status=applied
+
+
+###
+PATCH http://127.0.0.1:8000/pet/pets/2/
+Content-Type: application/json
+Authorization: token f983c242f8ff5204818e5948fe641c334e724baa
+
+###
+curl -X PATCH http://127.0.0.1:8000/user/ \
+    -H "Content-Type: application/json" \
+    -H "Authorization: token 1cf5589ac51babac3808484739e09c8929b86dc4" \
+    -d '{
+        "first_name": "UpdatedFirstName",
+        "last_name": "UpdatedLastName",
+        "phone": "1234567890"
+    }'
+###
+curl -X PATCH http://127.0.0.1:8000/adoption/25/ \
+    -H "Content-Type: application/json" \
+    -H "Authorization: token 1cf5589ac51babac3808484739e09c8929b86dc4" \
+    -d '{
+        "status": "interviewed"
+    }'
